@@ -1,6 +1,9 @@
 import { GoogleGenAI } from "@google/genai";
 import { RESUME_SUMMARY, EXPERIENCE_DATA, PROJECTS_DATA } from '../constants';
 
+// Fix: Declare process to avoid TS error when accessing process.env
+declare const process: any;
+
 const SYSTEM_INSTRUCTION = `
 You are the AI Agent for Ashlin Joel Bangera's portfolio website. 
 Your goal is to answer questions about Ashlin's professional background, skills, and projects.
@@ -19,24 +22,13 @@ Tone: Professional, slightly financial/tech-forward ("Bloomberg style").
 If you don't know the answer based on this context, suggest they contact Ashlin directly via LinkedIn.
 `;
 
-// Initialize generic client - expects API Key to be available via process.env
-// In a real app, we'd handle key injection via backend or user input if client-side only.
-// For this demo, we assume process.env.API_KEY is present or we'll fallback gracefully in the UI.
-const apiKey = process.env.API_KEY || ''; 
-let ai: GoogleGenAI | null = null;
-
-if (apiKey) {
-  ai = new GoogleGenAI({ apiKey });
-}
+// Fix: Use process.env.API_KEY as per guidelines and remove import.meta.env usage
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const generateResponse = async (userMessage: string): Promise<string> => {
-  if (!ai) {
-    return "AI Interface Offline. Please configure API_KEY in environment variables to enable the Agentic experience.";
-  }
-
   try {
-    const model = ai.models.generateContent;
-    const result = await model({
+    // Fix: Call ai.models.generateContent directly
+    const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: userMessage,
       config: {
@@ -45,7 +37,7 @@ export const generateResponse = async (userMessage: string): Promise<string> => 
       }
     });
     
-    return result.text || "No signal received.";
+    return response.text || "No signal received.";
   } catch (error) {
     console.error("Gemini API Error:", error);
     return "Connection Interrupted. Please try again later.";
