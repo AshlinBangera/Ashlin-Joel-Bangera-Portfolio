@@ -2,13 +2,18 @@
 import React, { useState } from 'react';
 
 const Hero: React.FC = () => {
-  // Google Drive Direct Link
-  // Using the 'thumbnail' API often bypasses quota limits for view-only files while retaining quality
-  const [imgSrc, setImgSrc] = useState("https://drive.google.com/thumbnail?id=17olh2AIhYKIZGmurZxTVxUNoAS51qmFV&sz=w1920");
+  // Prioritize local file for stability. 
+  // Fallback chain: Local File -> Google Drive Thumbnail -> Generic Unsplash
+  const [imgSrc, setImgSrc] = useState("/trader-profile.png");
   
   const handleError = () => {
-     console.warn("Failed to load Drive image. Falling back to generic.");
-     setImgSrc("https://images.unsplash.com/photo-1611974765270-ca1258634369?q=80&w=1920&auto=format&fit=crop");
+     if (imgSrc === "/trader-profile.png") {
+         // Try Drive Link (Updated ID) if local file missing
+         setImgSrc("https://drive.google.com/thumbnail?id=18u26hlWcA92iR6cb9s6XP8PJeH85Dv9N&sz=w1920");
+     } else {
+         // Fallback to generic professional image
+         setImgSrc("https://images.unsplash.com/photo-1611974765270-ca1258634369?q=80&w=1920&auto=format&fit=crop");
+     }
   };
 
   return (
@@ -26,7 +31,6 @@ const Hero: React.FC = () => {
         <div className="relative w-full h-full">
             {/* 
                 Using object-contain and positioning bottom-right to handle cutout images better.
-                If the image has a background, it will still look okay but might leave gaps if aspect ratio differs.
             */}
            <img 
               src={imgSrc} 
