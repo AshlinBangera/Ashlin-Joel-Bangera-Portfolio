@@ -9,6 +9,7 @@ import ExperienceSection from './components/Experience';
 import CallToAction from './components/CallToAction';
 import Contact from './components/Contact';
 import AIChat from './components/AIChat';
+import Library from './components/Library';
 import { SKILLS_TICKER } from './constants';
 
 const App: React.FC = () => {
@@ -19,9 +20,10 @@ const App: React.FC = () => {
         <Hero />
         <Ticker skills={SKILLS_TICKER} />
         <TheEdge />
-        <Projects />
         <TechSpecs />
         <ExperienceSection />
+        <Projects />
+        <Library />
         <CallToAction />
         <Contact />
       </main>

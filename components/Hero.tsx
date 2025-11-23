@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-terminal-success"></span>
             </span>
             <span className="text-terminal-success text-xs font-mono tracking-wide uppercase">
-              Open to Roles in Dublin & Remote
+              Open to Roles in Ireland
             </span>
           </div>
 

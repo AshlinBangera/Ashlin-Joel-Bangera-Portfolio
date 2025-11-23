@@ -21,6 +21,7 @@ const Navbar: React.FC = () => {
           <a href="#thesis" className="text-sm font-mono text-terminal-muted hover:text-terminal-success transition-colors uppercase tracking-wider">Thesis</a>
           <a href="#stack" className="text-sm font-mono text-terminal-muted hover:text-terminal-success transition-colors uppercase tracking-wider">Stack</a>
           <a href="#portfolio" className="text-sm font-mono text-terminal-muted hover:text-terminal-success transition-colors uppercase tracking-wider">Portfolio</a>
+          <a href="#library" className="text-sm font-mono text-terminal-muted hover:text-terminal-success transition-colors uppercase tracking-wider">Library</a>
           <a href="#contact" className="text-sm font-mono text-terminal-muted hover:text-terminal-success transition-colors uppercase tracking-wider">Execute</a>
         </div>
         

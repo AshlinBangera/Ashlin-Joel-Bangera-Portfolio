@@ -8,7 +8,7 @@ const CallToAction: React.FC = () => {
       <div className="relative z-10 max-w-2xl mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Ready to Deploy?</h2>
         <p className="text-terminal-muted text-lg mb-10">
-          I'm currently looking for Product Management roles in high-growth FinTech or AI startups. Based in Dublin, Ireland.
+          I'm currently looking for Product Management roles in high-growth FinTech or AI startups. Based in Ireland.
         </p>
 
         <div className="flex flex-wrap justify-center gap-4">
